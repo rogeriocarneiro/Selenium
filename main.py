@@ -9,6 +9,9 @@ import pdb
 driver = webdriver.Chrome()
 driver.get('http://demostore.supersqa.com')
 
+#checks the page each half second up until the estipulated time
+driver.implicitly_wait(10)
+
 # By.ID examples - more stable option
 cart = driver.find_element(By.ID, "site-header-cart")
 cart_text = cart.text
@@ -16,7 +19,7 @@ print(f'{cart.text} \n {type(cart)}')
 
 search_field = driver.find_element(By.ID, "woocommerce-product-search-field-0")
 search_field.send_keys('Hoodie')
-# search_field.send_keys(Keys.ENTER)
+search_field.send_keys(Keys.ENTER)
 
 # By.CSS_SELECTOR
 # examples - best option when there is no id related directly to the item
